@@ -31,7 +31,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Customer getById(Integer id)
+    public Customer getById(@PathVariable Integer id)
     {
         return service.getById(id);
     }
