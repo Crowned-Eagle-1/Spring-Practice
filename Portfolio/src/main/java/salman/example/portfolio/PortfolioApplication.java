@@ -1,12 +1,13 @@
-package salman.example.ok;
+package salman.example.portfolio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OkApplication {
+public class PortfolioApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OkApplication.class, args);
+        SpringApplication.run(PortfolioApplication.class, args);
     }
+
 }
