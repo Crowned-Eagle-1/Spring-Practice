@@ -1,7 +1,9 @@
 package org.salman.sma.Controllers;
 
 import org.salman.sma.Model.Student;
+import org.salman.sma.Model.Teacher;
 import org.salman.sma.Repository.StudentRepo;
+import org.salman.sma.Repository.TeacherRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +16,11 @@ import java.util.List;
 public class HomeController {
 
     StudentRepo repo;
-    public HomeController(StudentRepo repo)
+    TeacherRepo trepo;
+    public HomeController(StudentRepo repo, TeacherRepo trepo)
     {
         this.repo=repo;
+        this.trepo=trepo;
     }
     //temporary memory list
 //    private List<Student> students = new ArrayList<>();
@@ -39,16 +43,29 @@ public class HomeController {
 //        return "redirect:/";
 //    }
 
-    @GetMapping("/all")
+    @GetMapping("/s_all")
     public List<Student> getAllStudents()
     {
         return repo.findAll();
     }
 
-    @PostMapping("/add")
+    @PostMapping("/s_add")
     public Student addStudent(@RequestBody Student student)
     {
         return repo.save(student);
     }
+
+    @GetMapping("/t_all")
+    public List<Teacher> getAllTeacher()
+    {
+        return trepo.findAll();
+    }
+
+    @PostMapping("/t_add")
+    public Teacher addStudent(@RequestBody Teacher teacher)
+    {
+        return trepo.save(teacher);
+    }
+
 
 }
