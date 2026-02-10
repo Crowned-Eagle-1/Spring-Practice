@@ -1,6 +1,7 @@
 package org.salman.sma.Controllers;
 
 import org.salman.sma.Model.Student;
+import org.salman.sma.Repository.StudentRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +13,13 @@ import java.util.List;
 @RequestMapping("/api")
 public class HomeController {
 
+    StudentRepo repo;
+    public HomeController(StudentRepo repo)
+    {
+        this.repo=repo;
+    }
     //temporary memory list
-    private List<Student> students = new ArrayList<>();
+//    private List<Student> students = new ArrayList<>();
 
 //    @GetMapping({"/","/home"})
 //    public String home(Model model)
@@ -36,15 +42,13 @@ public class HomeController {
     @GetMapping("/all")
     public List<Student> getAllStudents()
     {
-        return students;
+        return repo.findAll();
     }
 
     @PostMapping("/add")
     public Student addStudent(@RequestBody Student student)
     {
-        students.add(student);
-
-        return student;
+        return repo.save(student);
     }
 
 }
