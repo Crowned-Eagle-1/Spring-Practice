@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class HomeController {
-    @GetMapping("/home")
+    @GetMapping("{/home")
     public String showHome(Model model)
     {
         model.addAttribute("message", "Welcome to Student Management System");
